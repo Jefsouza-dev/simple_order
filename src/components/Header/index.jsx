@@ -9,15 +9,15 @@ export const Header = ({ setSelectedSection }) => {
       <S.MainHeader>
         <S.ButtonWrapping>
           <S.Button onClick={() => setSelectedSection("customer")}>
-            <S.itemButton src={customersIcon} />
+            <S.itemButton src={customersIcon} alt="" />
             <S.titleButton>Clientes</S.titleButton>
           </S.Button>
           <S.Button onClick={() => setSelectedSection("order")}>
-            <S.itemButton src={orderIcon} />
+            <S.itemButton src={orderIcon} alt="" />
             <S.titleButton>Pedidos</S.titleButton>
           </S.Button>
           <S.Button onClick={() => setSelectedSection("product")}>
-            <S.itemButton src={productIcon} />
+            <S.itemButton src={productIcon} alt="" />
             <S.titleButton>Produtos</S.titleButton>
           </S.Button>
         </S.ButtonWrapping>
