@@ -7,22 +7,19 @@ import { NewCustomerModal } from "./NewCustomerModal";
 export const CustomerSection = () => {
   const [openAddNewCustomerModal, setOpenAddNewCustomerModal] = useState(false);
 
-  const handleModalAddNewProduct = () => {
+  const handleAddNewCustomer = () => {
     setOpenAddNewCustomerModal(!openAddNewCustomerModal);
   };
 
   return (
     <>
-      <ActionBar
-        titleSection={"Cliente"}
-        setOpenModal={handleModalAddNewProduct}
-      />
+      <ActionBar titleSection={"Cliente"} setOpenModal={handleAddNewCustomer} />
       <S.CustomerListContainer>
         <EachCustomer />
       </S.CustomerListContainer>
 
       {openAddNewCustomerModal && (
-        <NewCustomerModal closeModal={handleModalAddNewProduct} />
+        <NewCustomerModal closeModal={handleAddNewCustomer} />
       )}
     </>
   );
