@@ -10,7 +10,7 @@ export const EachInput = styled.label`
 
   .title {
     color: #2f3036;
-    size: 12px;
+    font-size: 12px;
     font-weight: 700;
   }
 `;

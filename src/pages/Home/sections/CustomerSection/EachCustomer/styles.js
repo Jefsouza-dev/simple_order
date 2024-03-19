@@ -31,7 +31,7 @@ export const CustomerData = styled.section`
   .customerName {
     width: 141px;
     height: 15px;
-    size: 12px;
+    font-size: 12px;
     font-weight: 700;
     color: #1f2024;
     margin-bottom: 5px;
@@ -40,7 +40,7 @@ export const CustomerData = styled.section`
   .customerCNPJ {
     width: 141px;
     height: 16px;
-    size: 12px;
+    font-size: 12px;
     font-weight: 400px;
     color: #71727a;
   }

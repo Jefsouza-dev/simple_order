@@ -31,6 +31,6 @@ export const Button = styled.button`
   background: #006ffd;
   border-radius: 5px;
   font-weight: 500;
-  size: 14px;
+  font-size: 14px;
   color: #ffffff;
 `;

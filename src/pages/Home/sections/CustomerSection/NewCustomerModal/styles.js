@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ModalContent = styled.div`
-  background-color: white;
+  background-color: #ffffff;
   width: 1068px;
   height: 441px;
   border-radius: 8px;
@@ -13,7 +13,7 @@ export const Header = styled.div`
   align-items: flex-start;
 
   .title {
-    size: 14px;
+    font-size: 14px;
     font-weight: 800;
     padding: 20px 20px 0 20px;
   }
@@ -53,6 +53,6 @@ export const Button = styled.button`
   .text {
     color: #ffffff;
     font-weight: 500;
-    size: 14px;
+    font-size: 14px;
   }
 `;
