@@ -1,20 +1,17 @@
 import * as S from "./styles";
-import CloseIcon from "../../../../../assets/closeIcon.svg";
 import { Input } from "../../../../../components/Input";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
+import { ModalHeader } from "../../../../../components/ModalHeader";
+import { ModalSeparator } from "../../../../../components/ModalSeparator";
+import { ModalButton } from "../../../../../components/ModalButton";
 
 export const NewCustomerModal = ({ closeModal }) => {
   return (
     <ModalAnimation>
       <S.ModalContent>
-        <S.Header>
-          <span className="title"> Cadastrar cliente</span>
-          <button onClick={closeModal}>
-            <img className="closeButton" src={CloseIcon} alt="" />
-          </button>
-        </S.Header>
+        <ModalHeader title="Cadastrar cliente" closeModal={closeModal} />
 
-        <S.Separator />
+        <ModalSeparator />
 
         <S.inputArea>
           <Input title="Nome" />
@@ -28,12 +25,10 @@ export const NewCustomerModal = ({ closeModal }) => {
           <Input title="Número" />
         </S.inputArea>
 
-        <S.Separator />
+        <ModalSeparator />
 
         <S.ButtonContainer>
-          <S.Button>
-            <span className="text"> Salvar </span>
-          </S.Button>
+          <ModalButton />
         </S.ButtonContainer>
       </S.ModalContent>
     </ModalAnimation>

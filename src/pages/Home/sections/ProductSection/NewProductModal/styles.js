@@ -7,24 +7,6 @@ export const ModalContent = styled.div`
   border-radius: 8px;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  .title {
-    font-size: 14px;
-    font-weight: 800;
-    padding: 20px 20px 0 20px;
-  }
-
-  .closeButton {
-    width: 13px;
-    height: 13px;
-    padding: 20px 20px 0 20px;
-  }
-`;
-
 export const inputArea = styled.div`
   margin: 0 20px 0 20px;
   display: flex;
@@ -36,18 +18,11 @@ export const inputArea = styled.div`
     margin-bottom: 27px;
   }
 
-  .biggerInputs {
-    .inputLabel {
-      color: #2f3036;
-      font-size: 12px;
-      font-weight: 700;
-    }
+  .inputLabel {
+    color: #2f3036;
+    font-size: 12px;
+    font-weight: 700;
   }
-`;
-
-export const Separator = styled.div`
-  border: 1px solid #d9d9d9;
-  margin: 27px 0 19px 0;
 `;
 
 export const DescriptionInput = styled.textarea`
@@ -69,7 +44,7 @@ export const UploadPhotoArea = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin: 10px 0 0 0;
+  margin: 10px 0 25px 0;
   border: 5px dashed #c5c6cc;
   border-radius: 8px;
 
@@ -100,4 +75,10 @@ export const UploadPhotoButton = styled.button`
     font-size: 12px;
     font-weight: 400;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px 12px;
 `;

@@ -1,21 +1,18 @@
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
 import * as S from "./styles";
-import closeIcon from "../../../../../assets/closeIcon.svg";
 import uploadImage from "../../../../../assets/uploadImage.svg";
 import { Input } from "../../../../../components/Input";
+import { ModalHeader } from "../../../../../components/ModalHeader";
+import { ModalSeparator } from "../../../../../components/ModalSeparator";
+import { ModalButton } from "../../../../../components/ModalButton";
 
 export const NewProductModal = ({ closeModal }) => {
   return (
     <ModalAnimation>
       <S.ModalContent>
-        <S.Header>
-          <span className="title"> Cadastrar Produto</span>
-          <button onClick={closeModal}>
-            <img className="closeButton" src={closeIcon} alt="" />
-          </button>
-        </S.Header>
+        <ModalHeader title="Cadastrar produto" closeModal={closeModal} />
 
-        <S.Separator />
+        <ModalSeparator />
 
         <S.inputArea>
           <div className="defaultInput">
@@ -37,6 +34,12 @@ export const NewProductModal = ({ closeModal }) => {
             </S.UploadPhotoArea>
           </div>
         </S.inputArea>
+
+        <ModalSeparator />
+
+        <S.ButtonContainer>
+          <ModalButton />
+        </S.ButtonContainer>
       </S.ModalContent>
     </ModalAnimation>
   );
