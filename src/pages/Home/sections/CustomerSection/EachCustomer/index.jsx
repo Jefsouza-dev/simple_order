@@ -1,8 +1,8 @@
 import * as S from "./styles";
 
-export const EachCustomer = () => {
+export const EachCustomer = ({ openModal }) => {
   return (
-    <S.Customer>
+    <S.Customer onClick={openModal}>
       <S.CustomerAcronym>
         <span>EV</span>
       </S.CustomerAcronym>

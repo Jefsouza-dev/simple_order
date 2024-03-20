@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const Customer = styled.div`
+export const Customer = styled.button`
   width: 317px;
   height: 64px;
   background: #ffffff;
@@ -12,7 +12,7 @@ export const Customer = styled.div`
 export const CustomerAcronym = styled.section`
   width: 40px;
   height: 40px;
-  margin: 0 16px 0 16px;
+  margin: 0 0 0 16px;
   background: #72adf3;
   border-radius: 16px;
   display: flex;
@@ -27,6 +27,8 @@ export const CustomerAcronym = styled.section`
 export const CustomerData = styled.section`
   display: flex;
   flex-direction: column;
+  text-align: left;
+  padding: 16px;
 
   .customerName {
     width: 141px;

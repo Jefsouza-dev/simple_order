@@ -1,15 +1,16 @@
 import { styled } from "styled-components";
 
-export const productCard = styled.section`
+export const productCard = styled.button`
   width: 250px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  border-radius: 13px 13px 0 0;
 `;
 
 export const img = styled.div`
   background-color: #abbbcc;
-  width: 100%;
+  width: 250px;
   height: 160px;
   display: flex;
   justify-content: center;
@@ -26,6 +27,7 @@ export const DetailsSection = styled.div`
   justify-content: center;
   background: #fff;
   padding: 4px 0 4px 0;
+  text-align: left;
 
   .title {
     font-size: 12px;

@@ -8,7 +8,7 @@ import { CustomerDetailsModal } from "./CustomerDetailsModal";
 export const CustomerSection = () => {
   const [openAddNewCustomerModal, setOpenAddNewCustomerModal] = useState(false);
   const [openCustomerDetailsModal, setOpenCustomerDetailsModal] =
-    useState(true);
+    useState(false);
 
   const handleAddNewCustomerModal = () => {
     setOpenAddNewCustomerModal(!openAddNewCustomerModal);
@@ -25,7 +25,7 @@ export const CustomerSection = () => {
         setOpenModal={handleAddNewCustomerModal}
       />
       <S.CustomerListContainer>
-        <EachCustomer />
+        <EachCustomer openModal={handleCustomerDetailsModal} />
       </S.CustomerListContainer>
 
       {openAddNewCustomerModal && (

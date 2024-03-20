@@ -7,7 +7,7 @@ import { ProductDetailsModal } from "./ProductDetailsModal";
 
 export const ProductSection = () => {
   const [openAddNewProductModal, setOpenAddNewProductModal] = useState(false);
-  const [openProductDetailsModal, setOpenProductDetailsModal] = useState(true);
+  const [openProductDetailsModal, setOpenProductDetailsModal] = useState(false);
 
   const handleAddNewProductModal = () => {
     setOpenAddNewProductModal(!openAddNewProductModal);
@@ -24,7 +24,7 @@ export const ProductSection = () => {
         setOpenModal={handleAddNewProductModal}
       />
       <S.ProductListContainer>
-        <EachProduct />
+        <EachProduct openModal={handleProductDetailsModal} />
       </S.ProductListContainer>
 
       {openAddNewProductModal && (
