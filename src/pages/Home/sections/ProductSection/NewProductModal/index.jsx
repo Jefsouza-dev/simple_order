@@ -1,12 +1,52 @@
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
 import * as S from "./styles";
 import uploadImage from "../../../../../assets/uploadImage.svg";
-import { Input } from "../../../../../components/Input";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { ModalButton } from "../../../../../components/ModalButton";
+import { InputPrice } from "./InputPrice";
+import { useState } from "react";
+import { Input } from "../../../../../components/Input";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { productsValidationSchema } from "../../../../../validations/productsValidation";
 
 export const NewProductModal = ({ closeModal }) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(productsValidationSchema),
+  });
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleProductImage = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const image = e.target.files[0];
+      console.log(image);
+      setSelectedImage(image);
+    }
+  };
+
+  const onSubmit = (data) => {
+    if (!selectedImage) {
+      alert("Você deve enviar uma imagem do produto");
+      return;
+    }
+
+    const productInfo = {
+      name: data.name,
+      price: data.price,
+      description: data.description,
+      image: selectedImage,
+    };
+
+    console.log(productInfo);
+  };
+
   return (
     <ModalAnimation>
       <S.ModalContent>
@@ -16,18 +56,49 @@ export const NewProductModal = ({ closeModal }) => {
 
         <S.inputArea>
           <div className="defaultInput">
-            <Input title="Nome" />
-            <Input title="Preço" />
+            <Input
+              title="Nome"
+              register={register}
+              name="name"
+              error={errors.name?.message}
+            />
+            <InputPrice
+              register={register}
+              name="price"
+              error={errors.price?.message}
+            />
           </div>
+
           <div className="biggerInputs">
             <span className="inputLabel">Descrição</span>
-            <S.DescriptionInput />
+            <S.DescriptionInput
+              {...register("description")}
+              name="description"
+            />
+
+            <S.errorMessageArea>
+              {errors.description && (
+                <p className="error">{errors.description.message}</p>
+              )}
+            </S.errorMessageArea>
 
             <span className="inputLabel">Foto do produto</span>
             <S.UploadPhotoArea>
               <S.UploadPhotoButton>
-                <img className="buttonICon" src={uploadImage} />
-                <span className="buttonTitle">Faca o upload da foto</span>
+                <input
+                  className="input"
+                  type="file"
+                  accept="image/jpeg, image/png"
+                  onChange={handleProductImage}
+                />
+                {!selectedImage && (
+                  <img className="buttonICon" src={uploadImage} />
+                )}
+                <span className="buttonTitle">
+                  {selectedImage
+                    ? "Imagem Selecionada"
+                    : "Faça o upload da foto"}
+                </span>
               </S.UploadPhotoButton>
 
               <span className="warning">JPG e PNG, somente</span>
@@ -38,7 +109,7 @@ export const NewProductModal = ({ closeModal }) => {
         <ModalSeparator />
 
         <S.ButtonContainer>
-          <ModalButton />
+          <ModalButton submit={handleSubmit(onSubmit)} />
         </S.ButtonContainer>
       </S.ModalContent>
     </ModalAnimation>

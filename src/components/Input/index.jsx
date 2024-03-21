@@ -1,10 +1,10 @@
 import * as S from "./styles";
 
-export const Input = ({ title, type, register, name, error }) => {
+export const Input = ({ title, register, name, error }) => {
   return (
     <S.EachInput>
       <span className="title">{title}</span>
-      <S.Input type={type} {...register(name)} />
+      <S.Input {...register(name)} />
 
       <S.errorMessageArea>
         {error && <p className="error">{error}</p>}

@@ -55,7 +55,7 @@ export const UploadPhotoArea = styled.div`
   }
 `;
 
-export const UploadPhotoButton = styled.button`
+export const UploadPhotoButton = styled.label`
   width: 183px;
   height: 29px;
   display: flex;
@@ -64,6 +64,14 @@ export const UploadPhotoButton = styled.button`
   border-radius: 10px;
   background: #006ffd;
   gap: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .input {
+    display: none;
+  }
 
   .buttonIcon {
     width: 35px;
@@ -81,4 +89,15 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 4px 12px;
+`;
+
+export const errorMessageArea = styled.div`
+  display: flex;
+  justify-content: center;
+
+  .error {
+    font-size: 10px;
+    color: red;
+    margin-top: -10px;
+  }
 `;
