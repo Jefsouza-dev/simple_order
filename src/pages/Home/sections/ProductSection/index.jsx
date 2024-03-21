@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as S from "./styles";
 import { ActionBar } from "../../../../components/ActionBar";
 import { EachProduct } from "./EachProduct";
@@ -6,6 +6,8 @@ import { NewProductModal } from "./NewProductModal";
 import { ProductDetailsModal } from "./ProductDetailsModal";
 
 export const ProductSection = () => {
+  const [products, setProducts] = useState([]);
+  const productTeste = products[0];
   const [openAddNewProductModal, setOpenAddNewProductModal] = useState(false);
   const [openProductDetailsModal, setOpenProductDetailsModal] = useState(false);
 
@@ -17,6 +19,16 @@ export const ProductSection = () => {
     setOpenProductDetailsModal(!openProductDetailsModal);
   };
 
+  useEffect(() => {
+    const searchProducts = () => {
+      const storedProducts =
+        JSON.parse(localStorage.getItem("@products")) || [];
+      setProducts(storedProducts);
+    };
+
+    searchProducts();
+  }, []);
+
   return (
     <>
       <ActionBar
@@ -24,15 +36,24 @@ export const ProductSection = () => {
         setOpenModal={handleAddNewProductModal}
       />
       <S.ProductListContainer>
-        <EachProduct openModal={handleProductDetailsModal} />
+        {products?.map((product) => (
+          <EachProduct key={product.id} openModal={handleProductDetailsModal} />
+        ))}
       </S.ProductListContainer>
 
       {openAddNewProductModal && (
-        <NewProductModal closeModal={handleAddNewProductModal} />
+        <NewProductModal
+          products={products}
+          addNewProducts={setProducts}
+          closeModal={handleAddNewProductModal}
+        />
       )}
 
       {openProductDetailsModal && (
-        <ProductDetailsModal closeModal={handleProductDetailsModal} />
+        <ProductDetailsModal
+          product={productTeste}
+          closeModal={handleProductDetailsModal}
+        />
       )}
     </>
   );

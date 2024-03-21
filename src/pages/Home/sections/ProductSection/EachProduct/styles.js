@@ -9,7 +9,7 @@ export const productCard = styled.button`
 `;
 
 export const img = styled.div`
-  background-color: #abbbcc;
+  background-color: #eaf2ff;
   width: 250px;
   height: 160px;
   display: flex;

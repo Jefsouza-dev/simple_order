@@ -10,8 +10,9 @@ import { Input } from "../../../../../components/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { productsValidationSchema } from "../../../../../validations/productsValidation";
+import { v4 as randomId } from "uuid";
 
-export const NewProductModal = ({ closeModal }) => {
+export const NewProductModal = ({ closeModal, products, addNewProducts }) => {
   const {
     register,
     handleSubmit,
@@ -31,19 +32,28 @@ export const NewProductModal = ({ closeModal }) => {
   };
 
   const onSubmit = (data) => {
-    if (!selectedImage) {
-      alert("Você deve enviar uma imagem do produto");
-      return;
-    }
+    // if (!selectedImage) {
+    //   alert("Você deve enviar uma imagem do produto");
+    //   return;
+    // }
 
+    // const reader = new FileReader();
+    // reader.readAsDataURL(selectedImage);
+    // reader.onload = () => {
     const productInfo = {
+      id: randomId(),
       name: data.name,
       price: data.price,
       description: data.description,
-      image: selectedImage,
+      // image: reader.result,
     };
 
-    console.log(productInfo);
+    const currentProducts = [...products, productInfo];
+
+    addNewProducts(currentProducts);
+
+    localStorage.setItem("@products", JSON.stringify(currentProducts));
+    // };
   };
 
   return (

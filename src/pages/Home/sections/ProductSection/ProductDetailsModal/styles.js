@@ -18,7 +18,10 @@ export const Image = styled.div`
   width: 313px;
   height: 100%;
   border-radius: 7px;
-  border: 1px solid blue;
+  background: #eaf2ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ProductInfo = styled.div`

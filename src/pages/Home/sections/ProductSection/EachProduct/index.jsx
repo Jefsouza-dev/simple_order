@@ -1,11 +1,11 @@
 import * as S from "./styles";
-import mockProduct from "../../../../../assets/mockProduct.svg";
+import fill from "../../../../../assets/fill.svg";
 
 export const EachProduct = ({ openModal }) => {
   return (
     <S.productCard onClick={openModal}>
       <S.img>
-        <img src={mockProduct} />
+        <img src={fill} />
       </S.img>
 
       <S.DetailsSection>
