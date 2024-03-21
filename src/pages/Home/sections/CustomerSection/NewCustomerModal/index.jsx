@@ -7,6 +7,7 @@ import { ModalButton } from "../../../../../components/ModalButton";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { customersValidationSchema } from "../../../../../validations/customersValidation";
+import { api } from "../../../../../services/api";
 
 export const NewCustomerModal = ({ closeModal }) => {
   const {
@@ -18,8 +19,19 @@ export const NewCustomerModal = ({ closeModal }) => {
     resolver: yupResolver(customersValidationSchema),
   });
 
+  const searchZipCode = async (code) => {
+    try {
+      const response = await api.get(`/${code}/json/`);
+      const { uf: cidade, localidade, bairro, logradouro } = response.data;
+
+      console.log(cidade, localidade, bairro, logradouro);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const onSubmit = (data) => {
-    console.log(data);
+    searchZipCode(data.zipCode);
   };
 
   return (
@@ -51,8 +63,8 @@ export const NewCustomerModal = ({ closeModal }) => {
           <Input
             title="CEP"
             register={register}
-            name="cep"
-            error={errors.cep?.message}
+            name="zipCode"
+            error={errors.zipCode?.message}
           />
           <Input
             title="Estado"
