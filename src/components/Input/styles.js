@@ -22,3 +22,14 @@ export const Input = styled.input`
   border-radius: 12px;
   outline-color: #006ffd;
 `;
+
+export const errorMessageArea = styled.div`
+  display: flex;
+  justify-content: center;
+
+  .error {
+    font-size: 10px;
+    color: red;
+    margin-top: -5px;
+  }
+`;

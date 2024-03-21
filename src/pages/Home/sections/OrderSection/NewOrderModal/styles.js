@@ -56,3 +56,8 @@ export const ProductsArea = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 `;
+
+export const SeparatorBaseboard = styled.div`
+  border: 1px solid #d9d9d9;
+  margin-bottom: 50px;
+`;

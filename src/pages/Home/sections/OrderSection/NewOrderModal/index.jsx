@@ -36,12 +36,9 @@ export const NewOrderModal = ({ closeModal }) => {
 
         <S.ProductsArea>
           <EachRegisteredProduct />
-          <EachRegisteredProduct />
-          <EachRegisteredProduct />
-          <EachRegisteredProduct />
-          <EachRegisteredProduct />
-          <EachRegisteredProduct />
         </S.ProductsArea>
+
+        <S.SeparatorBaseboard />
       </S.ModalContent>
     </ModalAnimation>
   );
