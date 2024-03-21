@@ -1,3 +1,5 @@
+// NewCustomerModal.jsx
+
 import * as S from "./styles";
 import { Input } from "../../../../../components/Input";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
@@ -8,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { customersValidationSchema } from "../../../../../validations/customersValidation";
 import { api } from "../../../../../services/api";
+import { useState } from "react";
 
 export const NewCustomerModal = ({ closeModal }) => {
   const {
@@ -19,19 +22,36 @@ export const NewCustomerModal = ({ closeModal }) => {
     resolver: yupResolver(customersValidationSchema),
   });
 
+  const [addressData, setAddressData] = useState({
+    state: "",
+    city: "",
+    neighborhood: "",
+    address: "",
+  });
+
   const searchZipCode = async (code) => {
     try {
       const response = await api.get(`/${code}/json/`);
-      const { uf: cidade, localidade, bairro, logradouro } = response.data;
+      const { uf: estado, localidade, bairro, logradouro } = response.data;
 
-      console.log(cidade, localidade, bairro, logradouro);
-    } catch (err) {
-      console.log(err);
+      setAddressData({
+        state: estado,
+        city: localidade,
+        neighborhood: bairro,
+        address: logradouro,
+      });
+    } catch (err) {}
+  };
+
+  const handleZipCodeChange = (e) => {
+    const value = e.target.value;
+    if (value.length === 8) {
+      searchZipCode(value);
     }
   };
 
   const onSubmit = (data) => {
-    searchZipCode(data.zipCode);
+    console.log(data);
   };
 
   return (
@@ -65,30 +85,35 @@ export const NewCustomerModal = ({ closeModal }) => {
             register={register}
             name="zipCode"
             error={errors.zipCode?.message}
+            onChange={handleZipCodeChange}
           />
           <Input
             title="Estado"
             register={register}
             name="state"
             error={errors.state?.message}
+            defaultValue={addressData.state}
           />
           <Input
             title="Cidade"
             register={register}
             name="city"
             error={errors.city?.message}
+            defaultValue={addressData.city}
           />
           <Input
             title="Bairro"
             register={register}
             name="neighborhood"
             error={errors.neighborhood?.message}
+            defaultValue={addressData.neighborhood}
           />
           <Input
             title="Endereço"
             register={register}
             name="address"
             error={errors.address?.message}
+            defaultValue={addressData.address}
           />
           <Input
             title="Número"

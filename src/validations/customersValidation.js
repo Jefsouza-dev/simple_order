@@ -12,9 +12,9 @@ export const customersValidationSchema = Yup.object().shape({
   zipCode: Yup.string()
     .required("CEP é obrigatório")
     .length(8, "O CEP deve ter exatamente 8 dígitos"),
-  state: Yup.string().required("Estado é obrigatório"),
-  city: Yup.string().required("Cidade é obrigatório"),
-  neighborhood: Yup.string().required("Bairro é obrigatório"),
-  address: Yup.string().required("Endereço é obrigatório"),
+  state: Yup.string(),
+  city: Yup.string(),
+  neighborhood: Yup.string(),
+  address: Yup.string(),
   number: Yup.string().required("Número é obrigatório"),
 });
