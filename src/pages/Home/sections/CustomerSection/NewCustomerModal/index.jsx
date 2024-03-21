@@ -1,5 +1,3 @@
-// NewCustomerModal.jsx
-
 import * as S from "./styles";
 import { Input } from "../../../../../components/Input";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
@@ -12,7 +10,7 @@ import { customersValidationSchema } from "../../../../../validations/customersV
 import { api } from "../../../../../services/api";
 import { useState } from "react";
 
-export const NewCustomerModal = ({ closeModal }) => {
+export const NewCustomerModal = ({ closeModal, customers, addCustomer }) => {
   const {
     register,
     handleSubmit,
@@ -51,7 +49,23 @@ export const NewCustomerModal = ({ closeModal }) => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    const newCustomer = {
+      name: data.name,
+      cnpj: data.cnpj,
+      phone: data.phone,
+      zipCode: data.zipCode,
+      state: data.state,
+      city: data.city,
+      neighborhood: data.neighborhood,
+      address: data.address,
+      number: data.number,
+    };
+
+    const currentCustomers = [...customers, newCustomer];
+
+    addCustomer(currentCustomers);
+
+    localStorage.setItem("@customers", JSON.stringify(currentCustomers));
   };
 
   return (

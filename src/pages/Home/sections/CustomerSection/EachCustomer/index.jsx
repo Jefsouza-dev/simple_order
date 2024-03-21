@@ -1,15 +1,22 @@
 import * as S from "./styles";
+import {
+  formatCnpj,
+  formatName,
+  generateAcronym,
+} from "../../../../../services/formatFunctions";
 
-export const EachCustomer = ({ openModal }) => {
+export const EachCustomer = ({ openModal, customer }) => {
+  const { name, cnpj } = customer;
+
   return (
     <S.Customer onClick={openModal}>
       <S.CustomerAcronym>
-        <span>EV</span>
+        <span>{generateAcronym(name)}</span>
       </S.CustomerAcronym>
 
       <S.CustomerData>
-        <span className="customerName">Energia Verde</span>
-        <span className="customerCNPJ">00.000.000/0000-00</span>
+        <span className="customerName">{formatName(name)}</span>
+        <span className="customerCNPJ">{formatCnpj(cnpj)}</span>
       </S.CustomerData>
     </S.Customer>
   );

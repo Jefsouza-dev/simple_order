@@ -26,7 +26,6 @@ export const NewProductModal = ({ closeModal }) => {
   const handleProductImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       const image = e.target.files[0];
-      console.log(image);
       setSelectedImage(image);
     }
   };
