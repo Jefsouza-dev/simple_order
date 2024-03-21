@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { customersValidationSchema } from "../../../../../validations/customersValidation";
 import { api } from "../../../../../services/api";
 import { useState } from "react";
+import { v4 as randomId } from "uuid";
 
 export const NewCustomerModal = ({ closeModal, customers, addCustomer }) => {
   const {
@@ -50,6 +51,7 @@ export const NewCustomerModal = ({ closeModal, customers, addCustomer }) => {
 
   const onSubmit = (data) => {
     const newCustomer = {
+      id: randomId(),
       name: data.name,
       cnpj: data.cnpj,
       phone: data.phone,

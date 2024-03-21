@@ -7,7 +7,7 @@ import { CustomerDetailsModal } from "./CustomerDetailsModal";
 
 export const CustomerSection = () => {
   const [customers, setCustomers] = useState([]);
-  const customerTest = customers[2];
+  const customerTest = customers[0];
   const [openAddNewCustomerModal, setOpenAddNewCustomerModal] = useState(false);
   const [openCustomerDetailsModal, setOpenCustomerDetailsModal] =
     useState(false);
@@ -40,7 +40,7 @@ export const CustomerSection = () => {
       <S.CustomerListContainer>
         {customers?.map((customer) => (
           <EachCustomer
-            key={customer.cnpj}
+            key={customer.id}
             openModal={handleCustomerDetailsModal}
             customer={customer}
           />
