@@ -54,10 +54,10 @@ export const NewCustomerModal = ({ closeModal, customers, addCustomer }) => {
       cnpj: data.cnpj,
       phone: data.phone,
       zipCode: data.zipCode,
-      state: data.state,
-      city: data.city,
-      neighborhood: data.neighborhood,
-      address: data.address,
+      state: addressData.state,
+      city: addressData.city,
+      neighborhood: addressData.neighborhood,
+      address: addressData.address,
       number: data.number,
     };
 

@@ -3,8 +3,24 @@ import * as S from "./styles";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { EachInfo } from "./EachInfo";
+import {
+  formatCnpj,
+  formatPhoneNumber,
+  formatZipCode,
+} from "../../../../../services/formatFunctions";
 
-export const CustomerDetailsModal = ({ closeModal }) => {
+export const CustomerDetailsModal = ({ closeModal, customer }) => {
+  const formattedData = {
+    cnpj: formatCnpj(customer.cnpj),
+    phone: formatPhoneNumber(customer.phone),
+    zipCode: formatZipCode(customer.zipCode),
+    state: customer.state,
+    city: customer.city,
+    neighborhood: customer.neighborhood,
+    number: customer.number,
+    address: customer.address,
+  };
+
   return (
     <ModalAnimation>
       <S.ModalContent>
@@ -12,14 +28,14 @@ export const CustomerDetailsModal = ({ closeModal }) => {
         <ModalSeparator />
 
         <S.InfoContainer>
-          <EachInfo title="CPNJ" data="00.000.000/0000-00" />
-          <EachInfo title="Telefone" data="(00) 0000-0000" />
-          <EachInfo title="CEP" data="12345-678" />
-          <EachInfo title="Estado" data="São Paulo" />
-          <EachInfo title="Cidade" data="Campinas" />
-          <EachInfo title="Bairro" data="Jardim das Flores" />
-          <EachInfo title="Número" data="123" />
-          <EachInfo title="Endereço" data="Rua das Palmeiras" />
+          <EachInfo title="CPNJ" data={formattedData.cnpj} />
+          <EachInfo title="Telefone" data={formattedData.phone} />
+          <EachInfo title="CEP" data={formattedData.zipCode} />
+          <EachInfo title="Estado" data={formattedData.state} />
+          <EachInfo title="Cidade" data={formattedData.city} />
+          <EachInfo title="Bairro" data={formattedData.neighborhood} />
+          <EachInfo title="Número" data={formattedData.number} />
+          <EachInfo title="Endereço" data={formattedData.address} />
         </S.InfoContainer>
       </S.ModalContent>
     </ModalAnimation>

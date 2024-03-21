@@ -20,3 +20,25 @@ export function generateAcronym(name) {
   const lastInitial = words[words.length - 1].charAt(0).toUpperCase();
   return firstInitial + lastInitial;
 }
+
+export function formatPhoneNumber(phoneNumber) {
+  const cleaned = ("" + phoneNumber).replace(/\D/g, "");
+
+  const length = cleaned.length;
+
+  if (length === 8) {
+    return cleaned.replace(/(\d{4})(\d{4})/, "$1 - $2");
+  } else if (length === 9) {
+    return cleaned.replace(/(\d{5})(\d{4})/, "$1 - $2");
+  } else if (length === 11) {
+    return cleaned.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2 - $3");
+  }
+}
+
+export function formatZipCode(code) {
+  const cleaned = ("" + code).replace(/\D/g, "");
+
+  return cleaned.replace(/(\d{5})(\d{3})/, "$1-$2");
+}
+
+//

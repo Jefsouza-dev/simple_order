@@ -7,6 +7,7 @@ import { CustomerDetailsModal } from "./CustomerDetailsModal";
 
 export const CustomerSection = () => {
   const [customers, setCustomers] = useState([]);
+  const customerTest = customers[2];
   const [openAddNewCustomerModal, setOpenAddNewCustomerModal] = useState(false);
   const [openCustomerDetailsModal, setOpenCustomerDetailsModal] =
     useState(false);
@@ -20,11 +21,13 @@ export const CustomerSection = () => {
   };
 
   useEffect(() => {
-    const storedCustomers =
-      JSON.parse(localStorage.getItem("@customers")) || [];
-    setCustomers(storedCustomers);
+    const searchCustomers = () => {
+      const storedCustomers =
+        JSON.parse(localStorage.getItem("@customers")) || [];
+      setCustomers(storedCustomers);
+    };
 
-    console.log(storedCustomers);
+    searchCustomers();
   }, []);
 
   return (
@@ -53,7 +56,10 @@ export const CustomerSection = () => {
       )}
 
       {openCustomerDetailsModal && (
-        <CustomerDetailsModal closeModal={handleCustomerDetailsModal} />
+        <CustomerDetailsModal
+          customer={customerTest}
+          closeModal={handleCustomerDetailsModal}
+        />
       )}
     </>
   );
