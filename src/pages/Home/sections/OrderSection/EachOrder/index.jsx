@@ -1,20 +1,25 @@
 import * as S from "./styles";
+import {
+  formatToCurrency,
+  generateAcronym,
+} from "../../../../../services/formatFunctions";
 
-export const EachOrder = () => {
+export const EachOrder = ({ order }) => {
+  const { customer, quantity, total } = order;
+
   return (
     <S.OrderCard>
       <S.ContentSpace>
         <S.Acronym>
-          <span className="text">IS</span>
+          <span className="text">{generateAcronym(customer)}</span>
         </S.Acronym>
         <S.OrderInfos>
-          <span className="CustomerName">Império dos Sonhos</span>
-          <span className="amount">Qtd. produtos: 123</span>
+          <span className="CustomerName">{customer}</span>
+          <span className="amount">Qtd. produtos: {quantity}</span>
         </S.OrderInfos>
 
         <S.Price>
-          <span className="text"> R$ 49,99 </span>
-          <span></span>
+          <span className="text"> {formatToCurrency(total)} </span>
         </S.Price>
       </S.ContentSpace>
     </S.OrderCard>

@@ -6,13 +6,22 @@ export const Product = styled.div`
   border: 1px solid #d4d6dd;
   border-radius: 16px;
   display: flex;
+
+  img {
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+  }
 `;
 
-export const img = styled.div`
+export const imgArea = styled.div`
   width: 90px;
   height: 100%;
   border-radius: 16px;
-  border: 1px solid blue;
+  background: #eaf2ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const DetailsArea = styled.div`

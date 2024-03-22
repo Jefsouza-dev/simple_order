@@ -14,7 +14,7 @@ export const ContainerInfo = styled.div`
   justify-content: space-between;
 `;
 
-export const Image = styled.div`
+export const ImageArea = styled.div`
   width: 313px;
   height: 100%;
   border-radius: 7px;
@@ -22,6 +22,12 @@ export const Image = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  img {
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const ProductInfo = styled.div`

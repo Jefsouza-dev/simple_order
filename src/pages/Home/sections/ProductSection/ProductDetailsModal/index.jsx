@@ -28,9 +28,9 @@ export const ProductDetailsModal = ({ closeModal }) => {
         <ModalSeparator />
 
         <S.ContainerInfo>
-          <S.Image>
+          <S.ImageArea>
             <img src={fill} />
-          </S.Image>
+          </S.ImageArea>
 
           <S.ProductInfo>
             <S.TitleAndPrice>

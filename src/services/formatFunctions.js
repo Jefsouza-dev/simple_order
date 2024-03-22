@@ -43,4 +43,18 @@ export function formatZipCode(code) {
   return cleaned.replace(/(\d{5})(\d{3})/, "$1-$2");
 }
 
-//
+export const extractNumericValue = (value) => {
+  const numericValue = value
+    .replace("R$", "")
+    .replace(".", "")
+    .replace(",", ".");
+  return parseFloat(numericValue);
+};
+
+export const formatToCurrency = (value) => {
+  const formattedValue = value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  return formattedValue;
+};

@@ -15,9 +15,9 @@ export const EachProduct = ({ openModal, product }) => {
 
   return (
     <S.productCard onClick={handleClickCard}>
-      <S.img>
+      <S.imgArea>
         <img src={fill} />
-      </S.img>
+      </S.imgArea>
 
       <S.DetailsSection>
         <span className="title">{formatName(name)}</span>

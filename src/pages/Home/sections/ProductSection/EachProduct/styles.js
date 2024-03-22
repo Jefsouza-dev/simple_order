@@ -8,7 +8,7 @@ export const productCard = styled.button`
   border-radius: 13px 13px 0 0;
 `;
 
-export const img = styled.div`
+export const imgArea = styled.div`
   background-color: #eaf2ff;
   width: 250px;
   height: 160px;
@@ -16,6 +16,12 @@ export const img = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 13px 13px 0 0;
+
+  img {
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const DetailsSection = styled.div`
