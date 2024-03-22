@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as S from "./styles";
 import { ActionBar } from "../../../../components/ActionBar";
 import { EachProduct } from "./EachProduct";
 import { NewProductModal } from "./NewProductModal";
 import { ProductDetailsModal } from "./ProductDetailsModal";
+import { ProductsContext } from "../../../../contexts/ProductsContext";
 
 export const ProductSection = () => {
-  const [products, setProducts] = useState([]);
+  const { products, setProducts } = useContext(ProductsContext);
   const productTeste = products[0];
   const [openAddNewProductModal, setOpenAddNewProductModal] = useState(false);
   const [openProductDetailsModal, setOpenProductDetailsModal] = useState(false);
@@ -42,11 +43,7 @@ export const ProductSection = () => {
       </S.ProductListContainer>
 
       {openAddNewProductModal && (
-        <NewProductModal
-          products={products}
-          addNewProducts={setProducts}
-          closeModal={handleAddNewProductModal}
-        />
+        <NewProductModal closeModal={handleAddNewProductModal} />
       )}
 
       {openProductDetailsModal && (

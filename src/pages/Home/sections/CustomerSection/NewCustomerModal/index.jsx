@@ -8,10 +8,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { customersValidationSchema } from "../../../../../validations/customersValidation";
 import { api } from "../../../../../services/api";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CustomersContext } from "../../../../../contexts/CustomersContext";
 import { v4 as randomId } from "uuid";
 
-export const NewCustomerModal = ({ closeModal, customers, addCustomer }) => {
+export const NewCustomerModal = ({ closeModal }) => {
+  const { customers, setCustomers } = useContext(CustomersContext);
+
   const {
     register,
     handleSubmit,
@@ -65,7 +68,7 @@ export const NewCustomerModal = ({ closeModal, customers, addCustomer }) => {
 
     const currentCustomers = [...customers, newCustomer];
 
-    addCustomer(currentCustomers);
+    setCustomers(currentCustomers);
 
     localStorage.setItem("@customers", JSON.stringify(currentCustomers));
   };

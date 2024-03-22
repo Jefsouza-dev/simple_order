@@ -5,14 +5,17 @@ import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { ModalButton } from "../../../../../components/ModalButton";
 import { InputPrice } from "./InputPrice";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Input } from "../../../../../components/Input";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { productsValidationSchema } from "../../../../../validations/productsValidation";
+import { ProductsContext } from "../../../../../contexts/ProductsContext";
 import { v4 as randomId } from "uuid";
 
-export const NewProductModal = ({ closeModal, products, addNewProducts }) => {
+export const NewProductModal = ({ closeModal }) => {
+  const { products, setProducts } = useContext(ProductsContext);
+
   const {
     register,
     handleSubmit,
@@ -50,7 +53,7 @@ export const NewProductModal = ({ closeModal, products, addNewProducts }) => {
 
     const currentProducts = [...products, productInfo];
 
-    addNewProducts(currentProducts);
+    setProducts(currentProducts);
 
     localStorage.setItem("@products", JSON.stringify(currentProducts));
     // };

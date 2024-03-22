@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import * as S from "./styles";
 import { ActionBar } from "../../../../components/ActionBar";
 import { EachCustomer } from "./EachCustomer";
 import { NewCustomerModal } from "./NewCustomerModal";
 import { CustomerDetailsModal } from "./CustomerDetailsModal";
+import { CustomersContext } from "../../../../contexts/CustomersContext";
 
 export const CustomerSection = () => {
-  const [customers, setCustomers] = useState([]);
+  const { customers, setCustomers } = useContext(CustomersContext);
   const customerTest = customers[0];
   const [openAddNewCustomerModal, setOpenAddNewCustomerModal] = useState(false);
   const [openCustomerDetailsModal, setOpenCustomerDetailsModal] =
@@ -48,11 +49,7 @@ export const CustomerSection = () => {
       </S.CustomerListContainer>
 
       {openAddNewCustomerModal && (
-        <NewCustomerModal
-          closeModal={handleAddNewCustomerModal}
-          customers={customers}
-          addCustomer={setCustomers}
-        />
+        <NewCustomerModal closeModal={handleAddNewCustomerModal} />
       )}
 
       {openCustomerDetailsModal && (
