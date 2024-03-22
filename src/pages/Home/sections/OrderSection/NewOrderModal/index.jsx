@@ -89,11 +89,12 @@ export const NewOrderModal = ({ closeModal }) => {
               <option value="" disabled hidden>
                 Selecionar um cliente
               </option>
-              {costumers.map((customer) => (
-                <option key={customer.id} value={customer.name}>
-                  {customer.name}
-                </option>
-              ))}
+              {costumers &&
+                costumers.map((customer) => (
+                  <option key={customer.id} value={customer.name}>
+                    {customer.name}
+                  </option>
+                ))}
             </S.CustomerSelect>
 
             <span className="text">Produtos</span>
