@@ -24,17 +24,25 @@ export const OrderSection = () => {
     searchOrder();
   }, []);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filterItem = (event) => setSearchTerm(event.target.value);
+
   return (
     <>
       <ActionBar
         titleSection={"Pedido"}
         setOpenModal={handleNewOrderSectionModal}
+        filterItem={filterItem}
       />
 
       <S.OrderListContainer>
-        {order.map((order) => (
-          <EachOrder key={order.id} order={order} />
-        ))}
+        {order
+          .filter((order) =>
+            order.customer.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((order) => (
+            <EachOrder key={order.id} order={order} />
+          ))}
       </S.OrderListContainer>
 
       {openNewOrderSectionModal && (

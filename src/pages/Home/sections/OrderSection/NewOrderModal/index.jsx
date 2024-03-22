@@ -51,6 +51,9 @@ export const NewOrderModal = ({ closeModal }) => {
     localStorage.setItem("@order", JSON.stringify(allOrder));
   };
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filterItem = (event) => setSearchTerm(event.target.value);
+
   return (
     <ModalAnimation>
       <S.ModalContent>
@@ -73,18 +76,25 @@ export const NewOrderModal = ({ closeModal }) => {
 
           <span className="text">Produtos</span>
 
-          <S.SearchInput placeholder="Pesquisar produtos" />
+          <S.SearchInput
+            placeholder="Pesquisar produtos"
+            onChange={filterItem}
+          />
         </S.InputArea>
 
         <S.ProductsArea>
-          {products.map((product) => (
-            <EachRegisteredProduct
-              key={product.id}
-              product={product}
-              setQuantityOfProducts={setQuantityOfProducts}
-              setTotal={setTotal}
-            />
-          ))}
+          {products
+            .filter((product) =>
+              product.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((product) => (
+              <EachRegisteredProduct
+                key={product.id}
+                product={product}
+                setQuantityOfProducts={setQuantityOfProducts}
+                setTotal={setTotal}
+              />
+            ))}
         </S.ProductsArea>
 
         <S.SeparatorBaseboard />
