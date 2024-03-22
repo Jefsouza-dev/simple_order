@@ -1,26 +1,41 @@
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
 import * as S from "./styles";
+import { useContext, useState, useEffect } from "react";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { EachInfo } from "./EachInfo";
+import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
 import {
   formatCnpj,
   formatPhoneNumber,
   formatZipCode,
 } from "../../../../../services/formatFunctions";
 
-export const CustomerDetailsModal = ({ closeModal, customer }) => {
-  const formattedData = {
-    cnpj: formatCnpj(customer.cnpj),
-    phone: formatPhoneNumber(customer.phone),
-    zipCode: formatZipCode(customer.zipCode),
-    state: customer.state,
-    city: customer.city,
-    neighborhood: customer.neighborhood,
-    number: customer.number,
-    address: customer.address,
-  };
+export const CustomerDetailsModal = ({ closeModal }) => {
+  const { refId } = useContext(RefForDetailsModalContext);
+  const [customerData, setCustomerData] = useState(null);
 
+  useEffect(() => {
+    const searchCustomer = () => {
+      const customersData = JSON.parse(localStorage.getItem("@customers"));
+      const customer = customersData.find((customer) => customer.id === refId);
+      setCustomerData(customer);
+    };
+
+    searchCustomer();
+  }, [refId]);
+
+  const formattedData = {
+    cnpj: formatCnpj(customerData?.cnpj),
+    phone: formatPhoneNumber(customerData?.phone),
+    zipCode: formatZipCode(customerData?.zipCode),
+    state: customerData?.state,
+    city: customerData?.city,
+    neighborhood: customerData?.neighborhood,
+    number: customerData?.number,
+
+    address: customerData?.address,
+  };
   return (
     <ModalAnimation>
       <S.ModalContent>

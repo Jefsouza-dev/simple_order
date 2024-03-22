@@ -1,4 +1,6 @@
 import * as S from "./styles";
+import { useContext } from "react";
+import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
 import {
   formatCnpj,
   formatName,
@@ -6,10 +8,16 @@ import {
 } from "../../../../../services/formatFunctions";
 
 export const EachCustomer = ({ openModal, customer }) => {
-  const { name, cnpj } = customer;
+  const { id, name, cnpj } = customer;
+  const { setRefId } = useContext(RefForDetailsModalContext);
+
+  const handleClickCard = () => {
+    setRefId(id);
+    openModal();
+  };
 
   return (
-    <S.Customer onClick={openModal}>
+    <S.Customer onClick={handleClickCard}>
       <S.CustomerAcronym>
         <span>{generateAcronym(name)}</span>
       </S.CustomerAcronym>

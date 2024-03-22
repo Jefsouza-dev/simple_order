@@ -8,7 +8,6 @@ import { ProductsContext } from "../../../../contexts/ProductsContext";
 
 export const ProductSection = () => {
   const { products, setProducts } = useContext(ProductsContext);
-  const productTeste = products[0];
   const [openAddNewProductModal, setOpenAddNewProductModal] = useState(false);
   const [openProductDetailsModal, setOpenProductDetailsModal] = useState(false);
 
@@ -38,7 +37,11 @@ export const ProductSection = () => {
       />
       <S.ProductListContainer>
         {products?.map((product) => (
-          <EachProduct key={product.id} openModal={handleProductDetailsModal} />
+          <EachProduct
+            key={product.id}
+            openModal={handleProductDetailsModal}
+            product={product}
+          />
         ))}
       </S.ProductListContainer>
 
@@ -47,10 +50,7 @@ export const ProductSection = () => {
       )}
 
       {openProductDetailsModal && (
-        <ProductDetailsModal
-          product={productTeste}
-          closeModal={handleProductDetailsModal}
-        />
+        <ProductDetailsModal closeModal={handleProductDetailsModal} />
       )}
     </>
   );

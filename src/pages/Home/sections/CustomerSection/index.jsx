@@ -8,7 +8,6 @@ import { CustomersContext } from "../../../../contexts/CustomersContext";
 
 export const CustomerSection = () => {
   const { customers, setCustomers } = useContext(CustomersContext);
-  const customerTest = customers[0];
   const [openAddNewCustomerModal, setOpenAddNewCustomerModal] = useState(false);
   const [openCustomerDetailsModal, setOpenCustomerDetailsModal] =
     useState(false);
@@ -53,10 +52,7 @@ export const CustomerSection = () => {
       )}
 
       {openCustomerDetailsModal && (
-        <CustomerDetailsModal
-          customer={customerTest}
-          closeModal={handleCustomerDetailsModal}
-        />
+        <CustomerDetailsModal closeModal={handleCustomerDetailsModal} />
       )}
     </>
   );

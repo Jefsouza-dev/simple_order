@@ -3,9 +3,22 @@ import * as S from "./styles";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import fill from "../../../../../assets/fill.svg";
+import { useContext, useState, useEffect } from "react";
+import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
 
-export const ProductDetailsModal = ({ closeModal, product }) => {
-  const { name, price, description } = product;
+export const ProductDetailsModal = ({ closeModal }) => {
+  const { refId } = useContext(RefForDetailsModalContext);
+  const [productData, setproductData] = useState(null);
+
+  useEffect(() => {
+    const searchProducts = () => {
+      const productsData = JSON.parse(localStorage.getItem("@products"));
+      const product = productsData.find((product) => product.id === refId);
+      setproductData(product);
+    };
+
+    searchProducts();
+  }, [refId]);
 
   return (
     <ModalAnimation>
@@ -21,12 +34,12 @@ export const ProductDetailsModal = ({ closeModal, product }) => {
 
           <S.ProductInfo>
             <S.TitleAndPrice>
-              <span className="title">{name}</span>
-              <span className="price">{price}</span>
+              <span className="title">{productData?.name}</span>
+              <span className="price">{productData?.price}</span>
             </S.TitleAndPrice>
 
             <S.DescriptionArea>
-              <p className="descriptionText">{description}</p>
+              <p className="descriptionText">{productData?.description}</p>
             </S.DescriptionArea>
           </S.ProductInfo>
         </S.ContainerInfo>
