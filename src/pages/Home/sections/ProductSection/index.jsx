@@ -29,20 +29,28 @@ export const ProductSection = () => {
     searchProducts();
   }, []);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filterItem = (event) => setSearchTerm(event.target.value);
+
   return (
     <>
       <ActionBar
         titleSection={"Produto"}
         setOpenModal={handleAddNewProductModal}
+        filterItem={filterItem}
       />
       <S.ProductListContainer>
-        {products?.map((product) => (
-          <EachProduct
-            key={product.id}
-            openModal={handleProductDetailsModal}
-            product={product}
-          />
-        ))}
+        {products
+          .filter((product) =>
+            product.name.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((product) => (
+            <EachProduct
+              key={product.id}
+              openModal={handleProductDetailsModal}
+              product={product}
+            />
+          ))}
       </S.ProductListContainer>
 
       {openAddNewProductModal && (

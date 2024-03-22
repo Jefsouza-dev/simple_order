@@ -2,6 +2,7 @@ import * as S from "./styles";
 import fill from "../../../../../assets/fill.svg";
 import { useContext } from "react";
 import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
+import { formatName } from "../../../../../services/formatFunctions";
 
 export const EachProduct = ({ openModal, product }) => {
   const { id, name, price } = product;
@@ -19,7 +20,7 @@ export const EachProduct = ({ openModal, product }) => {
       </S.img>
 
       <S.DetailsSection>
-        <span className="title">{name}</span>
+        <span className="title">{formatName(name)}</span>
         <span className="price">R$ {price}</span>
       </S.DetailsSection>
     </S.productCard>

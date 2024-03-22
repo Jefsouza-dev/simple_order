@@ -30,21 +30,29 @@ export const CustomerSection = () => {
     searchCustomers();
   }, []);
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const filterItem = (event) => setSearchTerm(event.target.value);
+
   return (
     <>
       <ActionBar
         titleSection={"Cliente"}
         setOpenModal={handleAddNewCustomerModal}
+        filterItem={filterItem}
       />
 
       <S.CustomerListContainer>
-        {customers?.map((customer) => (
-          <EachCustomer
-            key={customer.id}
-            openModal={handleCustomerDetailsModal}
-            customer={customer}
-          />
-        ))}
+        {customers
+          .filter((customer) =>
+            customer.name.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .map((customer) => (
+            <EachCustomer
+              key={customer.id}
+              openModal={handleCustomerDetailsModal}
+              customer={customer}
+            />
+          ))}
       </S.CustomerListContainer>
 
       {openAddNewCustomerModal && (
