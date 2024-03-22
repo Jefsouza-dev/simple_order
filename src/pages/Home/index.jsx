@@ -15,7 +15,10 @@ export const Home = () => {
 
   return (
     <>
-      <Header setSelectedSection={setSelectedSection} />
+      <Header
+        setSelectedSection={setSelectedSection}
+        selectedSection={selectedSection}
+      />
 
       {selectedSection && sectionComponents[selectedSection]}
     </>
