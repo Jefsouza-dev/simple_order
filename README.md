@@ -21,7 +21,7 @@ Navigate to the project directory in the terminal and execute the following comm
 ```bash
 npm install
 ```
-Isso instalará as bibliotecas e pacotes necessários para o projeto.
+This will install the necessary libraries and packages for the project.
 
 ## Running the Project
 After the dependencies installation is complete, execute the following command to start the project:
