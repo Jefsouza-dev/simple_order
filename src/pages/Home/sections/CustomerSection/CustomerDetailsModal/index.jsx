@@ -1,10 +1,10 @@
-import { ModalAnimation } from "../../../../../animation/ModalAnimation";
-import * as S from "./styles";
 import { useContext, useState, useEffect } from "react";
+import { ModalAnimation } from "../../../../../animation/ModalAnimation";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
-import { EachInfo } from "./EachInfo";
 import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
+import * as S from "./styles";
+import { EachInfo } from "./EachInfo";
 import {
   formatCnpj,
   formatPhoneNumber,
@@ -36,6 +36,7 @@ export const CustomerDetailsModal = ({ closeModal }) => {
 
     address: customerData?.address,
   };
+
   return (
     <ModalAnimation>
       <S.ModalContent>

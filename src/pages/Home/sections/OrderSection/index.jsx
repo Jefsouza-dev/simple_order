@@ -1,9 +1,9 @@
-import { ActionBar } from "../../../../components/ActionBar";
-import * as S from "./styles";
 import { useState, useContext, useEffect } from "react";
-import { EachOrder } from "./EachOrder";
-import { NewOrderModal } from "./NewOrderModal";
+import { ActionBar } from "../../../../components/ActionBar";
 import { OrderContext } from "../../../../contexts/OrderContext";
+import { NewOrderModal } from "./NewOrderModal";
+import { EachOrder } from "./EachOrder";
+import * as S from "./styles";
 
 export const OrderSection = () => {
   const { order, setOrder } = useContext(OrderContext);

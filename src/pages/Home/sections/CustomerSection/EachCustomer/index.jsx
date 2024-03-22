@@ -1,6 +1,6 @@
-import * as S from "./styles";
 import { useContext } from "react";
 import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
+import * as S from "./styles";
 import {
   formatCnpj,
   formatName,

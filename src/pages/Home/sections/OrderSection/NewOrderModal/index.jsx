@@ -1,16 +1,16 @@
 import { useState, useEffect, useContext } from "react";
+import { v4 as randomId } from "uuid";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import * as S from "./styles";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
-import { notifySuccess } from "../../../../../animation/ToastSucess";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { ModalButton } from "../../../../../components/ModalButton";
 import { EachRegisteredProduct } from "./EachRegisteredProduct";
 import { OrderContext } from "../../../../../contexts/OrderContext";
 import { formatToCurrency } from "../../../../../services/formatFunctions";
-import { v4 as randomId } from "uuid";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { notifySuccess } from "../../../../../animation/ToastSucess";
 
 export const NewOrderModal = ({ closeModal }) => {
   const { order, setOrder } = useContext(OrderContext);

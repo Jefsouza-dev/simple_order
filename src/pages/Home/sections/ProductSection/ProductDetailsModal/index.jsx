@@ -1,9 +1,9 @@
+import { useState, useContext, useEffect } from "react";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
 import * as S from "./styles";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import fill from "../../../../../assets/fill.svg";
-import { useContext, useState, useEffect } from "react";
 import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
 
 export const ProductDetailsModal = ({ closeModal }) => {

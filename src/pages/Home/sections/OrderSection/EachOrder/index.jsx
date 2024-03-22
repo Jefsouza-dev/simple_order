@@ -1,8 +1,8 @@
-import * as S from "./styles";
 import {
   formatToCurrency,
   generateAcronym,
 } from "../../../../../services/formatFunctions";
+import * as S from "./styles";
 
 export const EachOrder = ({ order }) => {
   const { customer, quantity, total } = order;

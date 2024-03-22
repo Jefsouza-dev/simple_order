@@ -1,6 +1,6 @@
+import { useContext } from "react";
 import * as S from "./styles";
 import fill from "../../../../../assets/fill.svg";
-import { useContext } from "react";
 import { RefForDetailsModalContext } from "../../../../../contexts/RefForDetailsModalContext";
 import { formatName } from "../../../../../services/formatFunctions";
 

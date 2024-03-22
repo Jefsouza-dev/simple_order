@@ -1,10 +1,9 @@
+import { useState, useEffect } from "react";
 import * as S from "./styles";
 import {
   formatName,
   extractNumericValue,
-  formatToCurrency,
 } from "../../../../../../services/formatFunctions";
-import { useState, useEffect } from "react";
 import fill from "../../../../../../assets/fill.svg";
 
 export const EachRegisteredProduct = ({

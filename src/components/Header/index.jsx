@@ -1,7 +1,7 @@
-import * as S from "./styles";
 import customersIcon from "../../assets/customersIcon.svg";
 import orderIcon from "../../assets/orderIcon.svg";
 import productIcon from "../../assets/productIcon.svg";
+import * as S from "./styles";
 
 export const Header = ({ setSelectedSection, selectedSection }) => {
   return (

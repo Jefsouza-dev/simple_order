@@ -1,5 +1,5 @@
-import * as S from "./styles";
 import CloseIcon from "../../assets/closeIcon.svg";
+import * as S from "./styles";
 
 export const ModalHeader = ({ title, closeModal }) => {
   return (

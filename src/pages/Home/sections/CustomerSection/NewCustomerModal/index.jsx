@@ -1,19 +1,19 @@
-import * as S from "./styles";
+import { useState, useContext } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../../../../components/Input";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
 import { notifySuccess } from "../../../../../animation/ToastSucess";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { ModalButton } from "../../../../../components/ModalButton";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { CustomersContext } from "../../../../../contexts/CustomersContext";
 import { customersValidationSchema } from "../../../../../validations/customersValidation";
 import { api } from "../../../../../services/api";
-import { useState, useContext } from "react";
-import { CustomersContext } from "../../../../../contexts/CustomersContext";
 import { v4 as randomId } from "uuid";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import * as S from "./styles";
 
 export const NewCustomerModal = ({ closeModal }) => {
   const { customers, setCustomers } = useContext(CustomersContext);
