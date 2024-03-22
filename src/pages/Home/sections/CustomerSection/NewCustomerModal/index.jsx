@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import { Input } from "../../../../../components/Input";
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
+import { notifySuccess } from "../../../../../animation/ToastSucess";
 import { ModalHeader } from "../../../../../components/ModalHeader";
 import { ModalSeparator } from "../../../../../components/ModalSeparator";
 import { ModalButton } from "../../../../../components/ModalButton";
@@ -11,6 +12,8 @@ import { api } from "../../../../../services/api";
 import { useState, useContext } from "react";
 import { CustomersContext } from "../../../../../contexts/CustomersContext";
 import { v4 as randomId } from "uuid";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const NewCustomerModal = ({ closeModal }) => {
   const { customers, setCustomers } = useContext(CustomersContext);
@@ -71,10 +74,17 @@ export const NewCustomerModal = ({ closeModal }) => {
     setCustomers(currentCustomers);
 
     localStorage.setItem("@customers", JSON.stringify(currentCustomers));
+
+    notifySuccess("Cliente cadastrado com sucesso");
+
+    setTimeout(() => {
+      closeModal();
+    }, 1500);
   };
 
   return (
     <ModalAnimation>
+      <ToastContainer />
       <S.ModalContent>
         <ModalHeader title="Cadastrar cliente" closeModal={closeModal} />
 

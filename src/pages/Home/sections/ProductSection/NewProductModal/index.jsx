@@ -1,4 +1,5 @@
 import { ModalAnimation } from "../../../../../animation/ModalAnimation";
+import { notifySuccess } from "../../../../../animation/ToastSucess";
 import * as S from "./styles";
 import uploadImage from "../../../../../assets/uploadImage.svg";
 import { ModalHeader } from "../../../../../components/ModalHeader";
@@ -12,6 +13,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { productsValidationSchema } from "../../../../../validations/productsValidation";
 import { ProductsContext } from "../../../../../contexts/ProductsContext";
 import { v4 as randomId } from "uuid";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const NewProductModal = ({ closeModal }) => {
   const { products, setProducts } = useContext(ProductsContext);
@@ -56,11 +59,18 @@ export const NewProductModal = ({ closeModal }) => {
     setProducts(currentProducts);
 
     localStorage.setItem("@products", JSON.stringify(currentProducts));
+
+    notifySuccess("Produto cadastrado com sucesso");
+
+    setTimeout(() => {
+      closeModal();
+    }, 1500);
     // };
   };
 
   return (
     <ModalAnimation>
+      <ToastContainer />
       <S.ModalContent>
         <ModalHeader title="Cadastrar produto" closeModal={closeModal} />
 
