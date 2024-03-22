@@ -37,6 +37,16 @@ export const NewOrderModal = ({ closeModal }) => {
   }, []);
 
   const addNewOrder = () => {
+    if (!selectedCustomer) {
+      alert("Você deve selecionar um cliente");
+      return;
+    }
+
+    if (quantityOfProducts === 0) {
+      alert("Você deve selecionar no mínimo um produto");
+      return;
+    }
+
     const newOrder = {
       id: randomId(),
       customer: selectedCustomer,
@@ -57,49 +67,59 @@ export const NewOrderModal = ({ closeModal }) => {
   return (
     <ModalAnimation>
       <S.ModalContent>
-        <ModalHeader title="Cadastro de pedido" closeModal={closeModal} />
-        <ModalSeparator />
-        <S.InputArea>
-          <S.CustomerSelect
-            value={selectedCustomer}
-            onChange={(e) => setSelectedCustomer(e.target.value)}
-          >
-            <option value="" disabled hidden>
-              Selecionar um cliente
-            </option>
-            {costumers.map((customer) => (
-              <option key={customer.id} value={customer.name}>
-                {customer.name}
+        <div className="topArea">
+          <ModalHeader title="Cadastro de pedido" closeModal={closeModal} />
+          <ModalSeparator />
+
+          <S.InputArea>
+            <S.CustomerSelect
+              value={selectedCustomer}
+              onChange={(e) => setSelectedCustomer(e.target.value)}
+            >
+              <option value="" disabled hidden>
+                Selecionar um cliente
               </option>
-            ))}
-          </S.CustomerSelect>
+              {costumers.map((customer) => (
+                <option key={customer.id} value={customer.name}>
+                  {customer.name}
+                </option>
+              ))}
+            </S.CustomerSelect>
 
-          <span className="text">Produtos</span>
+            <span className="text">Produtos</span>
 
-          <S.SearchInput
-            placeholder="Pesquisar produtos"
-            onChange={filterItem}
-          />
-        </S.InputArea>
+            <S.SearchInput
+              placeholder="Pesquisar produtos"
+              onChange={filterItem}
+            />
+          </S.InputArea>
 
-        <S.ProductsArea>
-          {products
-            .filter((product) =>
-              product.name.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-            .map((product) => (
-              <EachRegisteredProduct
-                key={product.id}
-                product={product}
-                setQuantityOfProducts={setQuantityOfProducts}
-                setTotal={setTotal}
-              />
-            ))}
-        </S.ProductsArea>
+          <S.ProductsArea>
+            {products &&
+              products
+                .filter((product) =>
+                  product.name.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((product) => (
+                  <EachRegisteredProduct
+                    key={product.id}
+                    product={product}
+                    setQuantityOfProducts={setQuantityOfProducts}
+                    setTotal={setTotal}
+                  />
+                ))}
+          </S.ProductsArea>
+        </div>
 
-        <S.SeparatorBaseboard />
-        <h1>{formatToCurrency(total)}</h1>
-        <ModalButton submit={addNewOrder} />
+        <div className="bottomArea">
+          <S.SeparatorBaseboard />
+          <S.infoArea>
+            <h2 className="totalPrice">
+              <span>Total: </span> {formatToCurrency(total)}
+            </h2>
+            <ModalButton submit={addNewOrder} />
+          </S.infoArea>
+        </div>
       </S.ModalContent>
     </ModalAnimation>
   );

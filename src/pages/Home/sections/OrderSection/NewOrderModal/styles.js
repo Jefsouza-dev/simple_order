@@ -4,8 +4,11 @@ import ArrowDropDown from "../../../../../assets/arrowDropDown.svg";
 export const ModalContent = styled.div`
   background-color: #ffffff;
   width: 1068px;
-  height: 526px;
+  height: 546px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const InputArea = styled.div`
@@ -51,13 +54,43 @@ export const SearchInput = styled.input`
 `;
 
 export const ProductsArea = styled.div`
-  margin: 0 20px 0 20px;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 15px;
+  flex-grow: 1;
+  max-height: 280px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
 `;
 
-export const SeparatorBaseboard = styled.div`
+export const SeparatorBaseboard = styled.footer`
   border: 1px solid #d9d9d9;
-  margin-bottom: 50px;
+  margin-top: auto;
+  margin-bottom: 1px;
+`;
+
+export const infoArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0px 20px;
+  margin-bottom: 10px;
+
+  .totalPrice {
+    font-size: 16px;
+    font-weight: 900;
+    color: #1f2024;
+
+    span {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1abc00;
+    }
+  }
 `;
