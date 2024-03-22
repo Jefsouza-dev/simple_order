@@ -26,6 +26,7 @@ export const CustomerDetailsModal = ({ closeModal }) => {
   }, [refId]);
 
   const formattedData = {
+    name: customerData?.name,
     cnpj: formatCnpj(customerData?.cnpj),
     phone: formatPhoneNumber(customerData?.phone),
     zipCode: formatZipCode(customerData?.zipCode),
@@ -40,7 +41,7 @@ export const CustomerDetailsModal = ({ closeModal }) => {
   return (
     <ModalAnimation>
       <S.ModalContent>
-        <ModalHeader title="Energia Verde" closeModal={closeModal} />
+        <ModalHeader title={formattedData.name} closeModal={closeModal} />
         <ModalSeparator />
 
         <S.InfoContainer>
