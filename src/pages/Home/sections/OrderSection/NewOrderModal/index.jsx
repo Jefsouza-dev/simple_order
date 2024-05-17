@@ -15,11 +15,20 @@ import { notifySuccess } from "../../../../../animation/ToastSucess";
 export const NewOrderModal = ({ closeModal }) => {
   const { order, setOrder } = useContext(OrderContext);
 
-  const [costumers] = useState([]);
+  const [costumers, setCostumers] = useState([]);
   const [products, setProducts] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [quantityOfProducts, setQuantityOfProducts] = useState(0);
   const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const searchCustomer = () => {
+      const customersData = JSON.parse(localStorage.getItem("@customers"));
+      setCostumers(customersData);
+    };
+
+    searchCustomer();
+  }, []);
 
   useEffect(() => {
     const searchProducts = () => {
