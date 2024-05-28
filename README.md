@@ -1,6 +1,13 @@
 # **Getting Started with Vite**
 
 
+## SimpleOrder
+
+O SimpleOrder é uma aplicação web desenvolvida para facilitar a gestão de pedidos e clientes. Com ele, é possível cadastrar novos clientes, novos produtos, registrar pedidos e associá-los aos clientes existentes.
+
+Link to deploy: https://expert-notes-nine.vercel.app/
+
+
 ## How to run the project.
 
 Before you begin, make sure you have Node.js and npm installed on your system. If you haven't already, follow the instructions at [Node.js](https://nodejs.org/) to install.
