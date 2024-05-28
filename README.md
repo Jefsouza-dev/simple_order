@@ -5,7 +5,7 @@
 
 SimpleOrder is a web application developed to simplify the management of orders and customers. With it, you can register new customers, new products, record orders, and associate them with existing customers.
 
-Link to deploy: https://expert-notes-nine.vercel.app/
+Link to deploy: https://siimpleeoordeer.vercel.app/
 
 
 ## How to run the project.
