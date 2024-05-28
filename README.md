@@ -3,7 +3,7 @@
 
 ## SimpleOrder
 
-O SimpleOrder é uma aplicação web desenvolvida para facilitar a gestão de pedidos e clientes. Com ele, é possível cadastrar novos clientes, novos produtos, registrar pedidos e associá-los aos clientes existentes.
+SimpleOrder is a web application developed to simplify the management of orders and customers. With it, you can register new customers, new products, record orders, and associate them with existing customers.
 
 Link to deploy: https://expert-notes-nine.vercel.app/
 
