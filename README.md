@@ -10,7 +10,7 @@ Before you begin, make sure you have Node.js and npm installed on your system. I
 To start the project, first, clone this repository to your local machine. Open the terminal and execute the following command:
 
 ```bash
-git clone https://github.com/Jefsouza-dev/teste_vidya.git
+https://github.com/Jefsouza-dev/simple_order.git
 ```
 
 This will create a local copy of the project on your machine.
